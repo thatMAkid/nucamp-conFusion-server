@@ -10,10 +10,10 @@ promoRouter.use(bodyParser.json());
 promoRouter.route('/')
     .get((req, res, next) => {
         Promos.find({})
-            .then((promos) => {
+            .then((promo) => {
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
-                res.json(promos);
+                res.json(promo);
             }, (err) => next(err))
             .catch((err) => next(err));
     })
@@ -29,7 +29,7 @@ promoRouter.route('/')
     })
     .put((req, res, next) => {
         res.statusCode = 403;
-        res.end('PUT operation not supported on /promos');
+        res.end('PUT operation not supported on /promotions');
     })
     .delete((req, res, next) => {
         Promos.remove({})
@@ -53,7 +53,7 @@ promoRouter.route('/:promoId')
     })
     .post((req, res, next) => {
         res.statusCode = 403;
-        res.end('POST operation not supported on /promos/ ' + req.params.promoId);
+        res.end('POST operation not supported on /promotions/ ' + req.params.promoId);
     })
     .put((req, res, next) => {
         Promos.findByIdAndUpdate(req.params.promoId, {
