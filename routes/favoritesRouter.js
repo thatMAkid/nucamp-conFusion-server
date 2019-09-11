@@ -29,7 +29,7 @@ favoritesRouter.route('/')
                 if (favorite) {
                     for (var i = 0; i < req.body.length; i++) {
                         if (favorite.dishes.indexOf(req.body[i]._id) === -1) {
-                            favorite.push(req.body[i]._id);
+                            favorite.dishes.push(req.body[i]._id);
                         }
                     }
                     favorite.save()
